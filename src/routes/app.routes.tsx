@@ -6,6 +6,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { Home } from '../screens/Home';
 import { RegisterLoginData } from '../screens/RegisterLoginData';
 import { Platform } from 'react-native';
+import theme from '../global/styles/theme';
 
 const {
   Navigator,
@@ -16,8 +17,8 @@ export function AppRoutes() {
   return (
     <Navigator
       tabBarOptions={{
-        activeTintColor: '#4E3975',
-        inactiveTintColor: '#9883BF',
+        activeTintColor: theme.colors.primary,
+        inactiveTintColor: theme.colors.primary_light,
         labelPosition: 'beside-icon',
         labelStyle: {
           fontFamily: 'Poppins_500Medium',
