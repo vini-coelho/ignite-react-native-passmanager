@@ -33,7 +33,7 @@ export function Home() {
 
   async function loadData() {
     if(!storedData) return
-
+    console.log(storedData)
     setSearchListData(storedData);
   }
 
@@ -43,7 +43,7 @@ export function Home() {
 
   useFocusEffect(useCallback(() => {
     loadData();
-  }, []));
+  }, [storedData]));
 
   function handleFilterLoginData(search: string) {
     const filteredData = storedData.filter(item => item.title.includes(search));
