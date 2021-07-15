@@ -5,6 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { AppRoutes } from './src/routes/app.routes';
 import { StorageProvider } from './src/context/StorageContext';
+import { ThemeProvider } from 'styled-components/native';
+
+import theme from './src/global/styles/theme';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,9 +21,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StorageProvider>
-        <AppRoutes />
-      </StorageProvider>
+      <ThemeProvider theme={theme}>
+        <StorageProvider>
+          <AppRoutes />
+        </StorageProvider>
+      </ThemeProvider>
     </NavigationContainer>
   );
 }
