@@ -55,6 +55,8 @@ export function RegisterLoginData() {
       console.log(err);
       Alert.alert("Não foi possível salvar a senha");
     }
+
+    reset();
   }
 
   return (
