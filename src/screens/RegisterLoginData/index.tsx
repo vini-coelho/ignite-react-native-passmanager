@@ -15,6 +15,7 @@ import {
   HeaderTitle,
   Form
 } from './styles';
+import { useStorageData } from '../../hooks/useStorageData';
 
 interface FormData {
   title: string;
@@ -39,9 +40,9 @@ export function RegisterLoginData() {
   } = useForm({
     resolver: yupResolver(schema)
   });
-  
-  const dataKey = '@passmanager:logins';
 
+  const { setStoredData } = useStorageData();
+  
   async function handleRegister(formData: FormData) {
     const newLoginData = {
       id: String(uuid.v4()),
@@ -49,11 +50,7 @@ export function RegisterLoginData() {
     }
 
     try {
-      const data = await AsyncStorage.getItem(dataKey);
-      const currentData = data ? JSON.parse(data) : [];
-      const formattedData = [ ...currentData, newLoginData ];
-  
-      await AsyncStorage.setItem(dataKey, JSON.stringify(formattedData));
+      await setStoredData(newLoginData);
     } catch(err) {
       console.log(err);
       Alert.alert("Não foi possível salvar a senha");
